@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 引入外部配置文件 要放在最上面 -->
+	<properties resource="mysql.properties"></properties>
+
+	<settings>
+		<!--配置指定使用 LOG4J 输出日志-->
+		<setting name="logImpl" value="LOG4J"/>
+
+        <!-- 将数据库中列名的下划线表示 如 user_name 自动转换成java中的驼峰表示 userName-->
+        <!--<setting name="mapUnderscoreToCamelCase" value="true"/>-->
+	</settings>
+
+	<!-- 为JAVA Bean起类别名 -->
+	<typeAliases >
+		<!-- 别名方式1，一个一个的配置 type中放置的是类的全路径，alias中放置的是类别名
+		<typeAliase type="com.cy.mybatis.beans.UserBean" alias="UserBean"/> -->
+		<!-- 别名方式2，自动扫描，将JAVA类的类名作为类的类别名 -->
+		<package name="tk.mybatis.simple.model"/>
+	</typeAliases>
+
+	<!-- 配置mybatis运行环境 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- type="JDBC" 代表使用JDBC的提交和回滚来管理事务 -->
+			<transactionManager type="JDBC" />
+
+			<!-- mybatis提供了3种数据源类型，分别是：POOLED,UNPOOLED,JNDI -->
+			<!-- POOLED 表示支持JDBC数据源连接池 -->
+			<!-- UNPOOLED 表示不支持数据源连接池 -->
+			<!-- JNDI 表示支持外部数据源连接池 -->
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+
+	<mappers>
+        <!-- myBatis从入门到精通 p41 -->
+		<!-- 告知映射文件方式1，一个一个的配置 -->
+        <!--<mapper resource="tk/mybatis/simple/mapper/CountryMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/UserMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/RoleMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/PrivilegeMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/UserRoleMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/RolePrivilegeMapper.xml" />-->
+
+		<!-- 告知映射文件方式2，自动扫描包内的Mapper接口与配置文件 -->
+        <!-- 为所有配置文件创建对应的接口，name="接口所在的包" 会自动扫描包内的接口 与对应的配置文件 -->
+		<!--<package name=""/>-->
+        <package name="tk.mybatis.simple.mapper"/>
+
+
+	</mappers>
+</configuration>
