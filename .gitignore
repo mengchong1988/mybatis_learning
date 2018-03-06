@@ -1,5 +1,6 @@
 *.class
 
+<<<<<<< HEAD
 #package file
 *.war
 *.ear
@@ -16,19 +17,47 @@ target/
 .classpath
 
 #idea
+=======
+# package file
+*.war
+*.ear
+
+# kdiff3 ignore
+*.orig
+
+# maven ignore
+target/
+
+# eclipse ignore
+.settings/
+.project
+.classpatch
+
+# idea
+>>>>>>> 802aa4fe3b99564d804c1e90cae71bf8efc03c10
 .idea/
 /idea/
 *.ipr
 *.iml
 *.iws
 
+<<<<<<< HEAD
 #temp file
+=======
+# temp file
+>>>>>>> 802aa4fe3b99564d804c1e90cae71bf8efc03c10
 *.log
 *.cache
 *.diff
 *.patch
 *.tmp
 
+<<<<<<< HEAD
 #system ignore
 .DS_Store
 Thumbs.db
+=======
+# system ignore
+.Ds_Store
+Thumbs.db
+>>>>>>> 802aa4fe3b99564d804c1e90cae71bf8efc03c10
